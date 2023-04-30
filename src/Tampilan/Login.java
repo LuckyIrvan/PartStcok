@@ -178,7 +178,7 @@ public class Login extends javax.swing.JFrame {
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         // TODO add your handling code here:
-       String id = txId.getText();
+    String id = txId.getText();
     String pass = txPassword.getText();
     String cekId = null;
     String cekPass = null;
@@ -202,6 +202,8 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "ID / PASSWORD SALAH");
     } else {
         JOptionPane.showMessageDialog(null, "LOGIN BERHASIL");
+        this.setVisible(false);
+        new Menu().setVisible(true);
     }
     }//GEN-LAST:event_bLoginActionPerformed
 

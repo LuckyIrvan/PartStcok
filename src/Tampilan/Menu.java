@@ -68,12 +68,12 @@ public void Tampil_Tanggal() {
 
         menuBackground1 = new background.MenuBackground();
         LbId = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bStock = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        bStatus = new javax.swing.JButton();
+        bBeli = new javax.swing.JButton();
+        bExit = new javax.swing.JButton();
+        bLogout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         LbJam = new javax.swing.JLabel();
@@ -86,10 +86,10 @@ public void Tampil_Tanggal() {
         LbId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LbId.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("STOCK SPAREPART");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bStock.setText("STOCK SPAREPART");
+        bStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bStockActionPerformed(evt);
             }
         });
 
@@ -100,31 +100,31 @@ public void Tampil_Tanggal() {
             }
         });
 
-        jButton3.setText("STATUS BARANG");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bStatus.setText("STATUS BARANG");
+        bStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bStatusActionPerformed(evt);
             }
         });
 
-        jButton4.setText("PEMBELIAN SPAREPART");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        bBeli.setText("PEMBELIAN SPAREPART");
+        bBeli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                bBeliActionPerformed(evt);
             }
         });
 
-        jButton5.setText("EXIT");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        bExit.setText("EXIT");
+        bExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                bExitActionPerformed(evt);
             }
         });
 
-        jButton6.setText("LOGOUT");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        bLogout.setText("LOGOUT");
+        bLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                bLogoutActionPerformed(evt);
             }
         });
 
@@ -162,16 +162,16 @@ public void Tampil_Tanggal() {
                             .addComponent(LbTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bBeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2))
                 .addGap(161, 161, 161))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBackground1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(bLogout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(bExit)
                 .addGap(22, 22, 22))
         );
         menuBackground1Layout.setVerticalGroup(
@@ -179,14 +179,14 @@ public void Tampil_Tanggal() {
             .addGroup(menuBackground1Layout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(bStock)
                     .addComponent(LbId))
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuBackground1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jButton2)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton4))
+                        .addComponent(bBeli))
                     .addGroup(menuBackground1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,11 +197,11 @@ public void Tampil_Tanggal() {
                             .addComponent(jLabel1)
                             .addComponent(LbTanggal))))
                 .addGap(38, 38, 38)
-                .addComponent(jButton3)
+                .addComponent(bStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(bExit)
+                    .addComponent(bLogout))
                 .addGap(17, 17, 17))
         );
 
@@ -219,29 +219,32 @@ public void Tampil_Tanggal() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bStockActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bStatusActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void bBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBeliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_bBeliActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void bExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        dispose();
+    }//GEN-LAST:event_bExitActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void bLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLogoutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        this.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_bLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,12 +285,12 @@ public void Tampil_Tanggal() {
     private javax.swing.JLabel LbId;
     private javax.swing.JLabel LbJam;
     private javax.swing.JLabel LbTanggal;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bBeli;
+    private javax.swing.JButton bExit;
+    private javax.swing.JButton bLogout;
+    private javax.swing.JButton bStatus;
+    private javax.swing.JButton bStock;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private background.MenuBackground menuBackground1;
