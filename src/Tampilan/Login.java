@@ -14,6 +14,7 @@ import koneksi.koneksi;
 public class Login extends javax.swing.JFrame {
  private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
+        
     /**
      * Creates new form Login
      */
@@ -153,6 +154,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txIdKeyPressed

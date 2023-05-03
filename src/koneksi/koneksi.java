@@ -12,15 +12,16 @@ import java.sql.*;
 public class koneksi {
     private Connection koneksi;
     public Connection connect(){
+        
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Berhasil Koneksi");
         }catch(ClassNotFoundException ex){
             System.out.println("Gagal Koneksi" + ex);
         }
-        String url = "jdbc:mysql://localhost/partstock";
+        String url = "jdbc:mysql://db4free.net:3306/partstock";
         try{
-            koneksi = DriverManager.getConnection(url,"root","");
+            koneksi = DriverManager.getConnection(url,"partstock","PartStock0404");
             System.out.println("Berhasil Koneksi DataBase");
         }catch(SQLException ex){
             System.out.println("Gagal Koneksi DataBase" + ex);
