@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Tampilan;
+package Tampilan.Menu;
+import Tampilan.Menu.StockSparepartForm.StockSparePart;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.Timer;
 import koneksi.koneksi;
+import Tampilan.Login.Login;
 /**
  *
  * @author lucky
@@ -20,12 +22,18 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    private String id;
+    public Menu(String id) {
         initComponents();
         Tampil_Jam();
         Tampil_Tanggal();
+        this.id = id;
+        LbId.setText(id);
     }
-public void Tampil_Jam(){
+    public String getId() {
+    return id;
+}
+protected void Tampil_Jam(){
         ActionListener taskPerformer = new ActionListener() {
  
         @Override
@@ -50,8 +58,8 @@ public void Tampil_Jam(){
         };
     new Timer(1000, taskPerformer).start();
     }   
- 
-public void Tampil_Tanggal() {
+
+protected void Tampil_Tanggal() {
     java.util.Date tglsekarang = new java.util.Date();
     SimpleDateFormat smpdtfmt = new SimpleDateFormat("dd MMMMMMMMM yyyy", Locale.getDefault());
     String tanggal = smpdtfmt.format(tglsekarang);
@@ -81,9 +89,9 @@ public void Tampil_Tanggal() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        menuBackground1.setPreferredSize(new java.awt.Dimension(916, 555));
+        menuBackground1.setPreferredSize(new java.awt.Dimension(916, 549));
 
-        LbId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LbId.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         LbId.setForeground(new java.awt.Color(255, 255, 255));
 
         bStock.setText("STOCK SPAREPART");
@@ -149,9 +157,6 @@ public void Tampil_Tanggal() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBackground1Layout.createSequentialGroup()
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuBackground1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(LbId, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(menuBackground1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,7 +164,10 @@ public void Tampil_Tanggal() {
                         .addGap(18, 18, 18)
                         .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(LbJam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LbTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))))
+                            .addComponent(LbTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))
+                    .addGroup(menuBackground1Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(LbId, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bBeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,7 +188,7 @@ public void Tampil_Tanggal() {
                 .addGap(178, 178, 178)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bStock)
-                    .addComponent(LbId))
+                    .addComponent(LbId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuBackground1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -198,7 +206,7 @@ public void Tampil_Tanggal() {
                             .addComponent(LbTanggal))))
                 .addGap(38, 38, 38)
                 .addComponent(bStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bExit)
                     .addComponent(bLogout))
@@ -222,6 +230,8 @@ public void Tampil_Tanggal() {
 
     private void bStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStockActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new StockSparePart().setVisible(true);
     }//GEN-LAST:event_bStockActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -277,7 +287,7 @@ public void Tampil_Tanggal() {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(args[0]).setVisible(true);
             }
         });
     }

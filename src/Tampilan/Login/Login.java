@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Tampilan;
+package Tampilan.Login;
+import Tampilan.Menu.Menu;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -70,6 +71,11 @@ public class Login extends javax.swing.JFrame {
         bLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bLoginActionPerformed(evt);
+            }
+        });
+        bLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bLoginKeyPressed(evt);
             }
         });
 
@@ -177,7 +183,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_bExitActionPerformed
-
+private String id;
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         // TODO add your handling code here:
     String id = txId.getText();
@@ -203,11 +209,24 @@ public class Login extends javax.swing.JFrame {
     if (cekId == null && cekPass == null) {
         JOptionPane.showMessageDialog(null, "ID / PASSWORD SALAH");
     } else {
+       this.id = cekId;
         JOptionPane.showMessageDialog(null, "LOGIN BERHASIL");
         this.setVisible(false);
-        new Menu().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        new Menu(getId()).setVisible(true);
     }
+});
+    }
+}
+
+public String getId() {
+    return id;
     }//GEN-LAST:event_bLoginActionPerformed
+
+    private void bLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bLoginKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bLoginKeyPressed
 
     /**
      * @param args the command line arguments
