@@ -19,9 +19,9 @@ public class koneksi {
         }catch(ClassNotFoundException ex){
             System.out.println("Gagal Koneksi" + ex);
         }
-        String url = "jdbc:mysql://db4free.net:3306/partstock";
+        String url = "jdbc:mysql://localhost:3306/partstock";
         try{
-            koneksi = DriverManager.getConnection(url,"partstock","PartStock0404");
+            koneksi = DriverManager.getConnection(url,"root","");
             System.out.println("Berhasil Koneksi DataBase");
         }catch(SQLException ex){
             System.out.println("Gagal Koneksi DataBase" + ex);
@@ -30,3 +30,27 @@ public class koneksi {
        return koneksi;
     }
 }
+
+//public class koneksi {
+//    private Connection koneksi;
+//    public Connection connect(){
+//        
+//        try{
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            System.out.println("Berhasil Koneksi");
+//        }catch(ClassNotFoundException ex){
+//            System.out.println("Gagal Koneksi" + ex);
+//        }
+//        String url = "jdbc:mysql://34.128.94.33:3306/partstock";
+//        try{
+//            koneksi = DriverManager.getConnection(url,"partstock","");
+//            System.out.println("Berhasil Koneksi DataBase");
+//        }catch(SQLException ex){
+//            System.out.println("Gagal Koneksi DataBase" + ex);
+//        }
+//        
+//       return koneksi;
+//    }
+//}
+
+

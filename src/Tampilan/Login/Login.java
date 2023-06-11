@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Tampilan.Login;
-import Tampilan.Menu.Menu;
+import Tampilan.Menu.MenuAdmin;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
+import util.User;
 /**
  *
  * @author lucky
@@ -186,12 +187,12 @@ public class Login extends javax.swing.JFrame {
 private String id;
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         // TODO add your handling code here:
-    String id = txId.getText();
+     String id = txId.getText();
     String pass = txPassword.getText();
     String cekId = null;
     String cekPass = null;
     try {
-        String sql = "select * from login where id = ? and password = ?";
+        String sql = "SELECT * FROM login WHERE id = ? AND password = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, id);
         ps.setString(2, pass);
@@ -200,23 +201,28 @@ private String id;
             cekId = login.getString("id");
             cekPass = login.getString("password");
         }
+        if (cekId == null || cekPass == null) {
+            JOptionPane.showMessageDialog(null, "ID / PASSWORD ANDA SALAH!");
+        } else if (cekId.contains("admin")) {
+            this.id = cekId;
+            JOptionPane.showMessageDialog(null, "LOGIN BERHASIL");
+            this.setVisible(false);
+            User.user = txId.getText();
+            
+            this.id = cekId;
+            User.user = txId.getText();
+            JOptionPane.showMessageDialog(null, "LOGIN BERHASIL");
+            this.setVisible(false);
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new MenuAdmin(getId()).setVisible(true);
+                }
+            });
+        }
         login.close();
         ps.close();
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-        return;
-    }
-    if (cekId == null && cekPass == null) {
-        JOptionPane.showMessageDialog(null, "ID / PASSWORD SALAH");
-    } else {
-       this.id = cekId;
-        JOptionPane.showMessageDialog(null, "LOGIN BERHASIL");
-        this.setVisible(false);
-        java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-        new Menu(getId()).setVisible(true);
-    }
-});
     }
 }
 

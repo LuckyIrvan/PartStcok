@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dbb5e1be-0bde-4c3e-a3f3-29e6a8cc2d90">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="USER" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     stockmast.`SIF` AS stockmast_SIF,
+     stockmast.`branch` AS stockmast_branch,
+     stockmast.`Description` AS stockmast_Description,
+     stockmast.`Model_KTB` AS stockmast_Model_KTB,
+     stockmast.`qty` AS stockmast_qty,
+     stockmast.`cost` AS stockmast_cost,
+     stockmast.`pricelist` AS stockmast_pricelist,
+     stockmast.`last_update_date` AS stockmast_last_update_date
+FROM
+     `stockmast` stockmast]]>
+	</queryString>
+	<field name="stockmast_SIF" class="java.lang.String"/>
+	<field name="stockmast_last_update_date" class="java.sql.Date"/>
+	<field name="stockmast_branch" class="java.lang.String"/>
+	<field name="stockmast_Model_KTB" class="java.lang.String"/>
+	<field name="stockmast_Description" class="java.lang.String"/>
+	<field name="stockmast_cost" class="java.lang.Double"/>
+	<field name="stockmast_pricelist" class="java.lang.Double"/>
+	<field name="stockmast_qty" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="84" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="84" forecolor="#FFFFFF" backcolor="#BD0B0B" uuid="d8500055-ab74-40cb-87b1-d8baed2c2447"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="16" width="217" height="26" forecolor="#FFFFFF" uuid="05810d47-9dcb-4b15-b1dc-656d21fc70b5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="20" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[BENGKEL MOBIL XYZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="42" width="268" height="28" forecolor="#FFFFFF" uuid="e3b8d6e2-acd6-470d-aee5-96278d1f1343"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Jl. Buncit Raya No. 11 A, RT.1/RW.5, Mampang Prpt., Kec. Mampang Prpt., Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12730]]></text>
+			</staticText>
+			<image>
+				<reportElement x="656" y="6" width="131" height="73" uuid="7f611422-087f-4de1-abeb-1993cd273b32"/>
+				<imageExpression><![CDATA["C:\\Users\\lucky\\Downloads\\PartStock_RIRI\\PartStock\\src\\gambar\\Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="62" y="59" width="6" height="20" uuid="d2263e37-65ee-4237-80a7-b32d97ef63dd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="59" width="47" height="20" uuid="f4a2ea46-cbfb-485d-8035-b772bb9be6d8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pertugas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="15" width="140" height="24" uuid="9f1e006f-58c9-4433-b11a-ded33658a177"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Stock Spareparts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="39" width="47" height="20" uuid="fa1bd885-5545-4108-99eb-9ddf404ff6ad"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="39" width="6" height="20" uuid="33f81004-4cf4-4643-824a-12fae619de6f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="39" width="40" height="20" uuid="157ccb76-3f9c-4bf1-a2ef-d1a30deb128f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="112" y="39" width="100" height="20" uuid="fb07bb7b-ba17-4ef1-b855-08324f0ad9f7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE,dd MMMMM yyyy",new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="59" width="100" height="20" uuid="07453e97-7c73-44a1-a2e0-d712c7e2d38b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{USER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="112" height="28" backcolor="#FFFFCC" uuid="bd59c07e-a225-4023-83bd-b8677b42aa79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="112" y="0" width="112" height="28" backcolor="#FFFFCC" uuid="067dd88d-be45-4746-bae4-bf792e0a3bcf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="224" y="0" width="112" height="28" backcolor="#FFFFCC" uuid="ad4f113b-b0ef-4033-bebf-260b1c55d425"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="336" y="0" width="112" height="28" backcolor="#FFFFCC" uuid="351145fc-217e-4982-8622-a40651980264"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="743" y="0" width="59" height="28" backcolor="#FFFFCC" uuid="4393016d-e209-46b3-b495-6252777ff37a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="448" y="0" width="104" height="28" backcolor="#FFFFCC" uuid="c075603a-8494-4c43-8610-5d14b19e07c3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="552" y="0" width="94" height="28" backcolor="#FFFFCC" uuid="cf80789c-89fd-454a-90d5-ba8204367f5f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="646" y="0" width="97" height="28" backcolor="#FFFFCC" uuid="bc576e8d-6bf1-49aa-8892-b23598339937"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="247" y="4" width="72" height="20" uuid="cdaabd06-2530-4675-8f03-8c79df92d4e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[KODE BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="4" width="81" height="20" uuid="bbc5a283-5d4f-42fd-b5c2-83c0b015d10e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TANGGAL (UPDATE)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="4" width="92" height="20" uuid="3cffb0af-5622-4865-b7b0-ad1db9db3ec8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[JENIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="4" width="82" height="20" uuid="2756a585-81d9-4d54-b7b7-470c221a82a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAMA BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="562" y="4" width="72" height="20" uuid="1ac368c5-617c-4f35-92b6-8db2ff79ccfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[HARGA BELI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="657" y="4" width="72" height="20" uuid="e93259bb-97c4-4654-8045-3ff1118615ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[HARGA JUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="747" y="4" width="51" height="20" uuid="a5fe62a2-f512-45ec-ab06-5fd7d870d92e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[JUMLAH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="4" width="72" height="20" uuid="37f70cad-3321-4668-a0d4-c2257307b3ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NAMA CABANG]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="112" height="20" uuid="17d2fdf8-16e7-45bc-a116-e3474b739961"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="112" y="0" width="112" height="20" uuid="62064d80-d6e4-4291-84f0-57e6113a84d8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="224" y="0" width="112" height="20" uuid="ec834c8c-a118-40a2-b966-f428bf6ef919"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="336" y="0" width="112" height="20" uuid="f160218f-7d44-42b2-b158-e9fc9a570a82"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="448" y="0" width="104" height="20" uuid="065e63f3-fc78-4567-af98-0beb827f8df3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="552" y="0" width="94" height="20" uuid="341a22a2-992a-41c7-8fce-c7f07765982d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="646" y="0" width="97" height="20" uuid="d05452a6-75ff-4cde-a5e1-0afdd899f225"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="743" y="0" width="59" height="20" uuid="83f83bc6-ab4b-468d-abc8-712cb2ad251b"/>
+			</rectangle>
+			<textField>
+				<reportElement x="15" y="0" width="72" height="20" uuid="b76ffa68-938a-4462-8092-b7196751149b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stockmast_last_update_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="0" width="92" height="20" uuid="b543ec80-612a-41e6-bdf8-b7602f43f171"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stockmast_Model_KTB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="0" width="91" height="20" uuid="c8b50580-dedb-4eb5-97f8-fb8dcd82ee6b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stockmast_Description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="574" y="0" width="67" height="20" uuid="0f2e2099-435b-45de-958d-fdb12588c092"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stockmast_cost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="669" y="0" width="68" height="20" uuid="eaa5334e-d35f-42fa-92eb-b13e79786575"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stockmast_pricelist}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="747" y="0" width="51" height="20" uuid="0bcd2f08-9b40-43bc-b76a-d696bcdcfa11"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stockmast_qty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="560" y="0" width="14" height="20" uuid="082cfa43-3711-4cc0-90d7-ec7a99349d2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="655" y="0" width="14" height="20" uuid="9dc781ee-7f06-4915-b10a-a43e813205a4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="247" y="0" width="72" height="20" uuid="d2f1fda9-6226-47c3-a469-26aa1708350c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stockmast_SIF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="0" width="95" height="20" uuid="f4ef8865-59fd-4473-9c95-fb8dfe2c23c5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stockmast_branch}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="180" height="9" forecolor="#FF0000" uuid="94907713-0648-458b-b1da-227dd4eddf48"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[BENGKEL MOBIL XYZ - JAKARTA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="356" y="0" width="50" height="9" uuid="e8c0f30c-85ac-496e-9b6d-d3b91c0a89b8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="406" y="0" width="40" height="9" uuid="2a51cd73-fe4e-4077-810c-c308949fae1b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="180" height="9" forecolor="#FF0000" uuid="382a07cf-231a-44fa-8150-8f00a55749a9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[* (data otomatis diproses oleh sistem, dan sesuai tanggal cetak)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="658" y="6" width="100" height="14" uuid="d8572940-c8b9-4185-a02c-6bcd2c0e163e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mengetahui, Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="658" y="66" width="99" height="14" uuid="ea4a2b52-78c1-43bd-a119-371f44463d9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Luki Irvan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="658" y="80" width="99" height="14" uuid="dbc01f59-ca04-43b9-91b2-77305b672ca1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(2020 - 43500043)]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

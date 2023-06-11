@@ -13,26 +13,39 @@ import java.util.Locale;
 import javax.swing.Timer;
 import koneksi.koneksi;
 import Tampilan.Login.Login;
+import Tampilan.Menu.Pembelian.Pembelian;
+import Tampilan.Menu.Penjualan.Penjualan;
+import Tampilan.Menu.Profil.profilingDisplay;
+import Tampilan.Menu.Status.Status;
+import Tampilan.Menu.Vendor.Vendor;
+import java.util.Objects;
+import util.User;
 /**
  *
  * @author lucky
  */
-public class Menu extends javax.swing.JFrame {
+public final class MenuAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
-    private String id;
-    public Menu(String id) {
+    private final String id;
+    public MenuAdmin(String id) {
         initComponents();
         Tampil_Jam();
         Tampil_Tanggal();
         this.id = id;
         LbId.setText(id);
+    if (!Objects.isNull(id)) {
+            LbId.setText(User.user);
+
+       } else {
+            LbId.setText("HALO ADMIN");        }
+
     }
-    public String getId() {
-    return id;
-}
+     public String getId() {
+        return id;
+    }
 protected void Tampil_Jam(){
         ActionListener taskPerformer = new ActionListener() {
  
@@ -77,7 +90,7 @@ protected void Tampil_Tanggal() {
         menuBackground1 = new background.MenuBackground();
         LbId = new javax.swing.JLabel();
         bStock = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bPenjualan = new javax.swing.JButton();
         bStatus = new javax.swing.JButton();
         bBeli = new javax.swing.JButton();
         bExit = new javax.swing.JButton();
@@ -86,6 +99,8 @@ protected void Tampil_Tanggal() {
         jLabel2 = new javax.swing.JLabel();
         LbJam = new javax.swing.JLabel();
         LbTanggal = new javax.swing.JLabel();
+        bProfiling = new javax.swing.JButton();
+        bVendor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,10 +116,10 @@ protected void Tampil_Tanggal() {
             }
         });
 
-        jButton2.setText("PENJUALAN SPAREPART");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bPenjualan.setText("PENJUALAN SPAREPART");
+        bPenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bPenjualanActionPerformed(evt);
             }
         });
 
@@ -150,6 +165,20 @@ protected void Tampil_Tanggal() {
         LbTanggal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         LbTanggal.setForeground(new java.awt.Color(255, 255, 255));
 
+        bProfiling.setText("PROFILING");
+        bProfiling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bProfilingActionPerformed(evt);
+            }
+        });
+
+        bVendor.setText("VENDOR");
+        bVendor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVendorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuBackground1Layout = new javax.swing.GroupLayout(menuBackground1);
         menuBackground1.setLayout(menuBackground1Layout);
         menuBackground1Layout.setHorizontalGroup(
@@ -173,7 +202,9 @@ protected void Tampil_Tanggal() {
                     .addComponent(bBeli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2))
+                    .addComponent(bPenjualan, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bProfiling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bVendor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(161, 161, 161))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBackground1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -185,16 +216,12 @@ protected void Tampil_Tanggal() {
         menuBackground1Layout.setVerticalGroup(
             menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuBackground1Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
+                .addGap(165, 165, 165)
+                .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LbId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bStock))
+                .addGap(13, 13, 13)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bStock)
-                    .addComponent(LbId, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuBackground1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton2)
-                        .addGap(29, 29, 29)
-                        .addComponent(bBeli))
                     .addGroup(menuBackground1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -203,10 +230,18 @@ protected void Tampil_Tanggal() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(LbTanggal))))
-                .addGap(38, 38, 38)
-                .addComponent(bStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                            .addComponent(LbTanggal)))
+                    .addGroup(menuBackground1Layout.createSequentialGroup()
+                        .addComponent(bPenjualan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bBeli)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(bVendor)
+                .addGap(18, 18, 18)
+                .addComponent(bProfiling)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(menuBackground1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bExit)
                     .addComponent(bLogout))
@@ -234,16 +269,22 @@ protected void Tampil_Tanggal() {
         new StockSparePart().setVisible(true);
     }//GEN-LAST:event_bStockActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPenjualanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        new Penjualan().setVisible(true);
+    }//GEN-LAST:event_bPenjualanActionPerformed
 
     private void bStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStatusActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new Status().setVisible(true);
     }//GEN-LAST:event_bStatusActionPerformed
 
     private void bBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBeliActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new Pembelian().setVisible(true);
     }//GEN-LAST:event_bBeliActionPerformed
 
     private void bExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExitActionPerformed
@@ -256,6 +297,22 @@ protected void Tampil_Tanggal() {
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_bLogoutActionPerformed
+
+    private void bProfilingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProfilingActionPerformed
+        // TODO add your handling code here:
+        if(User.user.equals("admin")){
+        new profilingDisplay().setVisible(true);
+        }else{
+            new profilingDisplay().setVisible(false);
+            JOptionPane.showMessageDialog(this, "You don't have permission");
+        }
+    }//GEN-LAST:event_bProfilingActionPerformed
+
+    private void bVendorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVendorActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Vendor().setVisible(true);
+    }//GEN-LAST:event_bVendorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,20 +331,23 @@ protected void Tampil_Tanggal() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu(args[0]).setVisible(true);
+                new MenuAdmin(args[0]).setVisible(true);
             }
         });
     }
@@ -299,9 +359,11 @@ protected void Tampil_Tanggal() {
     private javax.swing.JButton bBeli;
     private javax.swing.JButton bExit;
     private javax.swing.JButton bLogout;
+    private javax.swing.JButton bPenjualan;
+    private javax.swing.JButton bProfiling;
     private javax.swing.JButton bStatus;
     private javax.swing.JButton bStock;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton bVendor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private background.MenuBackground menuBackground1;

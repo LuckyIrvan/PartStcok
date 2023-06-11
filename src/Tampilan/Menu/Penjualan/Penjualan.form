@@ -52,18 +52,16 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="bNew" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bEdit" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bDeleted" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txCari" min="-2" pref="241" max="-2" attributes="0"/>
+                  <Component id="txCari" min="-2" pref="309" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bCari" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bBack" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bReport" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLTanggal" min="-2" max="-2" attributes="0"/>
@@ -78,10 +76,10 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="LbJam" pref="133" max="32767" attributes="0"/>
+                      <Component id="LbJam" pref="119" max="32767" attributes="0"/>
                       <Component id="LbTanggal" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -89,28 +87,29 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="bReport" min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="bBack" min="-2" pref="53" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txCari" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLJam" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="LbJam" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="bBack" alignment="1" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txCari" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLJam" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Component id="LbJam" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLTanggal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Component id="LbTanggal" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLTanggal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="LbTanggal" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="bNew" alignment="0" pref="53" max="32767" attributes="0"/>
+                              <Component id="bDeleted" alignment="0" max="32767" attributes="0"/>
+                              <Component id="bCari" alignment="1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="bEdit" alignment="0" pref="53" max="32767" attributes="0"/>
-                          <Component id="bNew" alignment="0" max="32767" attributes="0"/>
-                          <Component id="bDeleted" alignment="0" max="32767" attributes="0"/>
-                          <Component id="bCari" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -143,19 +142,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBackActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="bEdit">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/gambar/edit-text.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEditActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txCari">
@@ -280,7 +266,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="TableStock">
+        <Component class="javax.swing.JTable" name="TableOut">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">

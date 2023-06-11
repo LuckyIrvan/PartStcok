@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Tampilan.Menu.StockSparepartForm;
+package Tampilan.Menu.Status;
+
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,22 +23,23 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import util.User;
+
 /**
  *
  * @author lucky
  */
-public final class StockSparePart extends javax.swing.JFrame {
+public class Status extends javax.swing.JFrame {
  private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     /**
      * Creates new form StockSparePart
      */
-    private static StockSparePart stockSparePartForm;
-    public StockSparePart() {
+    private static Status statusForm;
+    public Status() {
         initComponents();
         Tampil_Jam();
         Tampil_Tanggal();
-        TableStock();
+        TableStatus();
         bNew.setToolTipText("NEW");
         bEdit.setToolTipText("EDIT");
         bDeleted.setToolTipText("DELETED");
@@ -45,42 +47,59 @@ public final class StockSparePart extends javax.swing.JFrame {
         bBack.setToolTipText("BACK TO MENU");
         txCari.setToolTipText("Cari");
         bReport.setToolTipText("PRINT REPORT");
-        stockSparePartForm = this;
+        statusForm = this;
     }
     
-    protected void TableStock(){
-     Object[] baris = {"NO","PART NUMBER","BRANCH_ID","BRANCH","DESCRIPTION","MODEL","QTY","COST","PRICE LIST","LAST UPDATE DATE","STOCK OUT DATE"};
+    public static Status getstatusForm(){
+        return statusForm;
+    }
+    protected void TableStatus(){
+     Object[] baris = {"NO","FAKTUR","PART NUMBER","DESCRIPTION","QTY","PEMILIK","STATUS"};
     tabmode = new DefaultTableModel(null,baris);
-    TableStock.setModel(tabmode);
-    String sql = "select SIF, branch_id, branch, Description, Model_KTB, qty, cost, pricelist, last_update_date, stock_out_date from stockmast ORDER BY last_update_date DESC";
+    TableStatus.setModel(tabmode);
+    String sql = "select faktur,SIF,Description,qty_status,pemilik,status from status ";
     try{
     java.sql.Statement stat = conn.createStatement();
             ResultSet input = stat.executeQuery(sql);
             int no = 1;
             while ( input.next()){
-                String a = input.getString("SIF");
-                String b = Integer.toString(input.getInt("branch_id"));
-                String c = input.getString("branch");
-                String d = input.getString("Description");
-                String e = input.getString("Model_KTB");
-                String f = Integer.toString(input.getInt("qty"));
-                String g = Integer.toString(input.getInt("cost"));
-                String h = Integer.toString(input.getInt("pricelist"));
-                Date lastUpdateDate = input.getDate("last_update_date");   
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                String i = formatter.format(lastUpdateDate);
-                String j = input.getString("stock_out_date");        
+                String a = input.getString("faktur");
+                String b = input.getString("SIF");
+                String c = input.getString("Description");
+                String d = Integer.toString(input.getInt("qty_status"));
+                String e = input.getString("pemilik");
+                String f = input.getString("status");
                 
-                String[] data = {Integer.toString(no),a,b,c,d,e,f,g,h,i,j};
+                String[] data = {Integer.toString(no),a,b,c,d,e,f};
                 tabmode.addRow(data);
                 no++;
              }
+            String insertSql = "insert into stockmast (sif,Description, qty)\n" +
+            "select status.SIF, status.Description,status.qty_status from status\n" +
+            "left join stockmast on stockmast.SIF = status.SIF\n" +
+            "where stockmast.SIF is null ";
+            PreparedStatement insertState = conn.prepareStatement(insertSql);
+            insertState.executeUpdate();
+            
+            String updateSql = "update stockmast A left join status B on A.SIF = B.SIF \n" +
+            "set A.qty = A.qty + B.qty_status where B.status like '%finish%'";
+            PreparedStatement updateState = conn.prepareStatement(updateSql);
+            updateState.executeUpdate();
+            
+            String deleteSql = "delete from status where status like '%finish%'";
+            PreparedStatement deleteState = conn.prepareStatement(deleteSql);
+            deleteState.executeUpdate();
+            
+            insertState.close();
+            updateState.close();
+            deleteState.close();  
+            stat.close();          
+            
+
         }catch (Exception ex){ex.printStackTrace();
     }
 }
-    public static StockSparePart getStockSparePartForm() {
-        return stockSparePartForm;
-    }
+    
 protected void Tampil_Jam(){
         ActionListener taskPerformer = new ActionListener() {
  
@@ -137,7 +156,7 @@ protected void Tampil_Tanggal() {
         bCari = new javax.swing.JButton();
         bReport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableStock = new javax.swing.JTable();
+        TableStatus = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -235,7 +254,7 @@ protected void Tampil_Tanggal() {
                 .addComponent(bBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLTanggal)
@@ -249,7 +268,7 @@ protected void Tampil_Tanggal() {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LbJam, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(LbTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +296,7 @@ protected void Tampil_Tanggal() {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        TableStock.setModel(new javax.swing.table.DefaultTableModel(
+        TableStatus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -288,7 +307,7 @@ protected void Tampil_Tanggal() {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(TableStock);
+        jScrollPane1.setViewportView(TableStatus);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -311,7 +330,7 @@ protected void Tampil_Tanggal() {
 
     private void bNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNewActionPerformed
         // TODO add your handling code here:
-        new Save().setVisible(true);
+        new SaveStatus().setVisible(true);
         
     }//GEN-LAST:event_bNewActionPerformed
 
@@ -323,40 +342,30 @@ protected void Tampil_Tanggal() {
 
     private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
         // TODO add your handling code here:
-        Object[] baris = {"NO","PART NUMBER","BRANCH_ID","BRANCH","DESCRIPTION","MODEL","QTY","COST","PRICE LIST","LAST UPDATE DATE","STOCK OUT DATE"};
-        tabmode = new DefaultTableModel(null,baris);
-        TableStock.setModel(tabmode);
+        Object[] baris = {"NO","FAKTUR","PART NUMBER","DESCRIPTION","QTY","PEMILIK","STATUS"};
+    tabmode = new DefaultTableModel(null,baris);
+    TableStatus.setModel(tabmode);
         
-        String sql = "select * from stockmast where SIF like '%"+txCari.getText()+"%'"
-                + " or branch_id like '%"+txCari.getText()+"%'"
-                + " or branch like '%"+txCari.getText()+"%'"
+        String sql = "select * from status where faktur like '%"+txCari.getText()+"%'"
+                + " or SIF like '%"+txCari.getText()+"%'"
                 + " or Description like '%"+txCari.getText()+"%'"
-                + " or Model_KTB like '%"+txCari.getText()+"%'"
-                + " or qty like '%"+txCari.getText()+"%'"
-                + " or cost like '%"+txCari.getText()+"%'"
-                + " or pricelist like '%"+txCari.getText()+"%'"
-                + " or last_update_date like '%"+txCari.getText()+"%'"
-                + " or stock_out_date like '%"+txCari.getText()+"%'";
+                + " or qty_status like '%"+txCari.getText()+"%'"
+                + " or pemilik like '%"+txCari.getText()+"%'"
+                + " or status like '%"+txCari.getText()+"%'";
 
         try{
     java.sql.Statement stat = conn.createStatement();
             ResultSet input = stat.executeQuery(sql);
             int no = 1;
             while ( input.next()){
-                String a = input.getString("SIF");
-                String b = Integer.toString(input.getInt("branch_id"));
-                String c = input.getString("branch");
-                String d = input.getString("Description");
-                String e = input.getString("Model_KTB");
-                String f = Integer.toString(input.getInt("qty"));
-                String g = Integer.toString(input.getInt("cost"));
-                String h = Integer.toString(input.getInt("pricelist"));
-                Date lastUpdateDate = input.getDate("last_update_date");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                String i = formatter.format(lastUpdateDate);
-                String j = input.getString("stock_out_date");
+                String a = input.getString("faktur");
+                String b = input.getString("SIF");
+                String c = input.getString("Description");
+                String d = Integer.toString(input.getInt("qty_status"));
+                String e = input.getString("pemilik");
+                String f = input.getString("status");
                 
-                String[] data = {Integer.toString(no),a,b,c,d,e,f,g,h,i,j};
+                String[] data = {Integer.toString(no),a,b,c,d,e,f};
                 tabmode.addRow(data);
                 no++;
              }
@@ -366,18 +375,18 @@ protected void Tampil_Tanggal() {
 
     private void bEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditActionPerformed
         // TODO add your handling code here:
-        new Edit().setVisible(true);
+        new EditStatus().setVisible(true);
     }//GEN-LAST:event_bEditActionPerformed
 
     private void bDeletedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDeletedActionPerformed
         // TODO add your handling code here:
-        new Deleted().setVisible(true);
+        new DeletedStatus().setVisible(true);
     }//GEN-LAST:event_bDeletedActionPerformed
 
     private void bReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReportActionPerformed
         // TODO add your handling code here:
         try{
-            String report = "src/Tampilan/Report/Stocks.jasper";
+            String report = "src/Tampilan/Report/Status.jasper";
             Connection conn = new koneksi().connect();
             HashMap parameter = new HashMap();
             parameter.put("USER", User.user);
@@ -408,20 +417,35 @@ protected void Tampil_Tanggal() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StockSparePart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Status.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StockSparePart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Status.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StockSparePart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Status.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StockSparePart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Status.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StockSparePart().setVisible(true);
+                new Status().setVisible(true);
             }
         });
     }
@@ -429,7 +453,7 @@ protected void Tampil_Tanggal() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LbJam;
     private javax.swing.JLabel LbTanggal;
-    private javax.swing.JTable TableStock;
+    private javax.swing.JTable TableStatus;
     private javax.swing.JButton bBack;
     private javax.swing.JButton bCari;
     private javax.swing.JButton bDeleted;
